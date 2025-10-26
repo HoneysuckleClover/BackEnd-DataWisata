@@ -1,11 +1,8 @@
-  <footer class="main-footer text-center">
-    <strong>&copy; <?= date('Y') ?> Wisata Magelang.</strong> All rights reserved.
-  </footer>
-</div>
-
-<!-- Script -->
-<script src="<?= base_url('assets/adminlte/plugins/jquery/jquery.min.js') ?>"></script>
-<script src="<?= base_url('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-<script src="<?= base_url('assets/adminlte/dist/js/adminlte.min.js') ?>"></script>
+<footer style="margin-top:40px; text-align:center; color:#aef7de; font-size:14px;">
+  <hr style="border-color:#1b4444;">
+  <p>&copy; <?= date('Y') ?> Sistem Informasi Wisata Magelang. All Rights Reserved.</p>
+</footer>
+</div> <!-- main-content -->
+</div> <!-- wrapper -->
 </body>
 </html>
