@@ -62,7 +62,7 @@ class Wisata extends CI_Controller {
         $data['title'] = 'Tambah Data Wisata';
         $data['kecamatan'] = $this->Kecamatan_model->get_all();
         $data['fasilitas'] = $this->Fasilitas_model->get_all();
-        $data['kategori_wisata'] = $this->Kategori_model->getAll(); // Tambahkan ini
+        $data['kategori_wisata'] = $this->Kategori_model->getAll(); 
         
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
