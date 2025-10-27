@@ -45,5 +45,47 @@ class Fasilitas_model extends CI_Model {
         }
         return true;
     }
+
+    // ===== METHOD BARU UNTUK CRUD FASILITAS =====
+
+    // Get data by ID
+    public function get_by_id($id) {
+        return $this->db->get_where($this->table, ['id_fasilitas' => $id])->row();
+    }
+
+    // Insert data
+    public function insert($data) {
+        $this->db->insert($this->table, $data);
+        return $this->db->insert_id();
+    }
+
+    // Update data
+    public function update($id, $data) {
+        $this->db->where('id_fasilitas', $id);
+        return $this->db->update($this->table, $data);
+    }
+
+    // Delete data
+    public function delete($id) {
+        $this->db->where('id_fasilitas', $id);
+        return $this->db->delete($this->table);
+    }
+
+    // Count all data
+    public function count_all() {
+        return $this->db->count_all($this->table);
+    }
+
+    // Get paginated data
+    public function get_paginated($limit, $offset) {
+        $this->db->limit($limit, $offset);
+        return $this->db->get($this->table)->result();
+    }
+
+    // Check if fasilitas has wisata
+    public function has_wisata($id_fasilitas) {
+        $this->db->where('id_fasilitas', $id_fasilitas);
+        return $this->db->count_all_results('wisata_fasilitas') > 0;
+    }
 }
 ?>

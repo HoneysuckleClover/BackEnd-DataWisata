@@ -19,16 +19,18 @@ class Wisata_model extends CI_Model {
         $this->db->select('
             w.id_wisata,
             w.nama_wisata,
-            w.jenis_wisata,
             w.alamat,
             w.jumlah_karyawan,
+            w.id_kategori,
             p.nama_pemilik,
             p.no_telp,
-            k.nama_kecamatan
+            k.nama_kecamatan,
+            kw.nama_kategori as nama_jenis_wisata
         ');
         $this->db->from('wisata w');
         $this->db->join('pemilik p', 'w.id_pemilik = p.id_pemilik', 'left');
         $this->db->join('kecamatan k', 'w.id_kecamatan = k.id_kecamatan', 'left');
+        $this->db->join('kategori_wisata kw', 'w.id_kategori = kw.id_kategori', 'left');
         $this->db->limit($limit, $start);
         $this->db->order_by('w.id_wisata', 'DESC');
         
@@ -41,16 +43,18 @@ class Wisata_model extends CI_Model {
         $this->db->select('
             w.id_wisata,
             w.nama_wisata,
-            w.jenis_wisata,
             w.alamat,
             w.jumlah_karyawan,
+            w.id_kategori,
             p.nama_pemilik,
             p.no_telp,
-            k.nama_kecamatan
+            k.nama_kecamatan,
+            kw.nama_kategori as nama_jenis_wisata
         ');
         $this->db->from('wisata w');
         $this->db->join('pemilik p', 'w.id_pemilik = p.id_pemilik', 'left');
         $this->db->join('kecamatan k', 'w.id_kecamatan = k.id_kecamatan', 'left');
+        $this->db->join('kategori_wisata kw', 'w.id_kategori = kw.id_kategori', 'left');
         $this->db->order_by('w.id_wisata', 'DESC');
         
         $query = $this->db->get();
@@ -62,19 +66,21 @@ class Wisata_model extends CI_Model {
         $this->db->select('
             w.id_wisata,
             w.nama_wisata,
-            w.jenis_wisata,
             w.alamat,
             w.jumlah_karyawan,
             w.id_pemilik,
             w.id_kecamatan,
+            w.id_kategori,
             p.nama_pemilik,
             p.nik_pemilik,
             p.no_telp,
-            k.nama_kecamatan
+            k.nama_kecamatan,
+            kw.nama_kategori as nama_jenis_wisata
         ');
         $this->db->from('wisata w');
         $this->db->join('pemilik p', 'w.id_pemilik = p.id_pemilik', 'inner');
         $this->db->join('kecamatan k', 'w.id_kecamatan = k.id_kecamatan', 'left');
+        $this->db->join('kategori_wisata kw', 'w.id_kategori = kw.id_kategori', 'left');
         $this->db->where('w.id_wisata', $id);
 
         $query = $this->db->get();
@@ -98,31 +104,33 @@ class Wisata_model extends CI_Model {
         return $this->db->delete($this->table);
     }
 
-public function get_detail($id) {
-    $this->db->select('
-        w.id_wisata,
-        w.nama_wisata,
-        w.jenis_wisata,
-        w.alamat,
-        w.jumlah_karyawan,
-        w.id_pemilik,
-        w.id_kecamatan,
-        p.nama_pemilik,
-        p.nik_pemilik,
-        p.no_telp,
-        k.nama_kecamatan,
-        GROUP_CONCAT(f.nama_fasilitas SEPARATOR ", ") AS fasilitas
-    ');
-    $this->db->from('wisata w');
-    $this->db->join('pemilik p', 'w.id_pemilik = p.id_pemilik', 'left');
-    $this->db->join('kecamatan k', 'w.id_kecamatan = k.id_kecamatan', 'left');
-    $this->db->join('wisata_fasilitas wf', 'w.id_wisata = wf.id_wisata', 'left');
-    $this->db->join('fasilitas f', 'wf.id_fasilitas = f.id_fasilitas', 'left');
-    $this->db->where('w.id_wisata', $id);
-    $this->db->group_by('w.id_wisata, w.nama_wisata, w.jenis_wisata, w.alamat, w.jumlah_karyawan, w.id_pemilik, w.id_kecamatan, p.nama_pemilik, p.nik_pemilik, p.no_telp, k.nama_kecamatan');
-    
-    $query = $this->db->get();
-    return $query->row();
-}
+    public function get_detail($id) {
+        $this->db->select('
+            w.id_wisata,
+            w.nama_wisata,
+            w.alamat,
+            w.jumlah_karyawan,
+            w.id_pemilik,
+            w.id_kecamatan,
+            w.id_kategori,
+            p.nama_pemilik,
+            p.nik_pemilik,
+            p.no_telp,
+            k.nama_kecamatan,
+            kw.nama_kategori as nama_jenis_wisata,
+            GROUP_CONCAT(f.nama_fasilitas SEPARATOR ", ") AS fasilitas
+        ');
+        $this->db->from('wisata w');
+        $this->db->join('pemilik p', 'w.id_pemilik = p.id_pemilik', 'left');
+        $this->db->join('kecamatan k', 'w.id_kecamatan = k.id_kecamatan', 'left');
+        $this->db->join('kategori_wisata kw', 'w.id_kategori = kw.id_kategori', 'left');
+        $this->db->join('wisata_fasilitas wf', 'w.id_wisata = wf.id_wisata', 'left');
+        $this->db->join('fasilitas f', 'wf.id_fasilitas = f.id_fasilitas', 'left');
+        $this->db->where('w.id_wisata', $id);
+        $this->db->group_by('w.id_wisata');
+        
+        $query = $this->db->get();
+        return $query->row();
+    }
 }
 ?>

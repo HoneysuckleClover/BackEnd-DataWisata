@@ -3,9 +3,9 @@
   <!-- Header dan Tombol -->
   <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
     <h4 style="font-weight:600; color:#0e3c38; margin-bottom:10px;">
-      <i class="fas fa-map-marked-alt me-2"></i>Daftar Wisata Magelang
+      <i class="fas fa-user-tie me-2"></i>Daftar Pemilik Wisata Magelang
     </h4>
-    <a href="<?= site_url('wisata/add') ?>" 
+    <a href="<?= site_url('pemilik/add') ?>" 
        class="btn shadow-sm" 
        style="background:#20c997; color:#fff; border:none; border-radius:8px; padding:8px 16px; font-weight:500; transition:0.3s;">
       <i class="fas fa-plus me-1"></i> Tambah Data
@@ -31,7 +31,7 @@
   <div class="card border-0 shadow-sm" style="border-radius:14px; overflow:hidden;">
     <div class="card-header text-white" 
          style="background:linear-gradient(135deg, #0e3c38 0%, #165b57 100%); font-weight:500; padding:14px 20px; font-size:15px;">
-      <i class="fas fa-list me-1"></i> Data Wisata Magelang
+      <i class="fas fa-list me-1"></i> Data Pemilik Wisata
       <span class="badge bg-light text-dark ms-2"><?= $total_rows ?> Data</span>
     </div>
 
@@ -41,55 +41,41 @@
           <thead style="background:#165b57; color:#e8fffb; font-weight:500;">
             <tr class="text-center">
               <th style="width:50px; padding:12px 8px;">No</th>
-              <th style="padding:12px 8px;">Nama Wisata</th>
-              <th style="padding:12px 8px;">Pemilik</th>
-              <th style="padding:12px 8px;">Jenis</th>
-              <th style="padding:12px 8px;">Kecamatan</th>
-              <th style="padding:12px 8px;">No Telp</th>
+              <th style="padding:12px 8px;">Nama Pemilik</th>
+              <th style="padding:12px 8px;">NIK</th>
+              <th style="padding:12px 8px;">No Telepon</th>
               <th style="width:140px; padding:12px 8px;">Aksi</th>
             </tr>
           </thead>
           <tbody>
-            <?php if(!empty($wisata)): ?>
+            <?php if(!empty($pemilik)): ?>
               <?php 
               $start = isset($start) ? $start : 0;
               $no = $start + 1; 
-              foreach($wisata as $w): 
+              foreach($pemilik as $p): 
               ?>
                 <tr style="transition:0.25s;" 
                     onmouseover="this.style.background='#f0f9f8'; this.style.transform='translateY(-1px)';" 
                     onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)';">
                   <td class="text-center text-muted fw-bold" style="padding:12px 8px;"><?= $no++ ?></td>
-                  <td style="padding:12px 8px; font-weight:600; color:#0e3c38;"><?= html_escape($w->nama_wisata) ?></td>
-                  <td style="padding:12px 8px;"><?= html_escape($w->nama_pemilik) ?></td>
+                  <td style="padding:12px 8px; font-weight:600; color:#0e3c38;"><?= html_escape($p['nama_pemilik']) ?></td>
+                  <td style="padding:12px 8px;"><?= html_escape($p['nik_pemilik']) ?></td>
                   <td style="padding:12px 8px;">
-                    <span class="badge" style="background:#e3f2fd; color:#1976d2; font-weight:500;">
-                      <?= html_escape($w->nama_jenis_wisata) ?>
-                    </span>
-                  </td>
-                  <td style="padding:12px 8px;"><?= html_escape($w->nama_kecamatan) ?></td>
-                  <td style="padding:12px 8px;">
-                    <i class="fas fa-phone me-1 text-muted"></i><?= html_escape($w->no_telp) ?>
+                    <i class="fas fa-phone me-1 text-muted"></i><?= html_escape($p['no_telp']) ?>
                   </td>
                   <td class="text-center" style="padding:12px 8px;">
                     <div class="btn-group" role="group">
-                      <a href="<?= site_url('wisata/detail/'.$w->id_wisata) ?>" 
-                         class="btn btn-sm" 
-                         style="background:#17a2b8; color:white; border-radius:6px; margin-right:4px;"
-                         data-bs-toggle="tooltip" title="Detail">
-                        <i class="fas fa-eye"></i>
-                      </a>
-                      <a href="<?= site_url('wisata/edit/'.$w->id_wisata) ?>" 
+                      <a href="<?= site_url('pemilik/edit/'.$p['id_pemilik']) ?>" 
                          class="btn btn-sm" 
                          style="background:#ffc107; color:#000; border-radius:6px; margin-right:4px;"
                          data-bs-toggle="tooltip" title="Edit">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="<?= site_url('wisata/delete/'.$w->id_wisata) ?>" 
+                      <a href="<?= site_url('pemilik/delete/'.$p['id_pemilik']) ?>" 
                          class="btn btn-sm" 
                          style="background:#dc3545; color:white; border-radius:6px;"
                          data-bs-toggle="tooltip" title="Hapus"
-                         onclick="return confirm('Yakin ingin menghapus data <?= html_escape($w->nama_wisata) ?>?')">
+                         onclick="return confirm('Yakin ingin menghapus data <?= html_escape($p['nama_pemilik']) ?>?')">
                         <i class="fas fa-trash"></i>
                       </a>
                     </div>
@@ -98,9 +84,9 @@
               <?php endforeach; ?>
             <?php else: ?>
               <tr>
-                <td colspan="7" class="text-center py-5 text-muted" style="background:#f8faf9;">
+                <td colspan="5" class="text-center py-5 text-muted" style="background:#f8faf9;">
                   <i class="fas fa-inbox fa-2x mb-3" style="color:#ccc;"></i><br>
-                  Belum ada data wisata.
+                  Belum ada data pemilik.
                 </td>
               </tr>
             <?php endif; ?>
