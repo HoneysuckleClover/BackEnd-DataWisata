@@ -371,7 +371,7 @@
     </div>
 
     <!-- Form Register -->
-    <form action="<?= base_url('register/process') ?>" method="POST" id="registerForm">
+    <form action="<?= base_url('register/simpan') ?>" method="POST" id="registerForm">
       <div class="form-group">
         <label class="form-label">
           <i class="fas fa-user me-1"></i>Nama Lengkap
@@ -379,7 +379,7 @@
         <div class="input-group">
           <i class="fas fa-user input-icon"></i>
           <input type="text" 
-                 name="fullname" 
+                 name="nama" 
                  class="form-control" 
                  placeholder="Masukkan nama lengkap Anda"
                  required

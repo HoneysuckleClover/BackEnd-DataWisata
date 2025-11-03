@@ -7,7 +7,7 @@
     </h4>
     <div class="d-flex align-items-center">
       <span class="text-muted me-3" style="font-size:14px;">
-        <i class="fas fa-user-circle me-1"></i><?= $this->session->userdata('nama') ?? 'Administrator' ?>
+        <i class="fas fa-user-circle me-1"></i><?= $this->session->userdata('ses_nama') ?? 'Administrator' ?>
       </span>
       <a href="<?= base_url('login/logout') ?>" 
          class="btn shadow-sm" 
@@ -202,7 +202,7 @@
               <i class="fas fa-chevron-right text-muted"></i>
             </a>
 
-            <a href="<?= base_url('user') ?>" 
+            <a href="<?= base_url('usermanagement') ?>" 
                class="btn d-flex align-items-center justify-content-between p-3" 
                style="background:#f8f9fa; border:1px solid #dee2e6; border-radius:8px; text-decoration:none; transition:0.3s;">
               <div class="d-flex align-items-center">

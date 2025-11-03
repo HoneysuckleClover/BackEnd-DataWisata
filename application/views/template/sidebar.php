@@ -63,20 +63,20 @@
       <span>Kategori Wisata</span>
     </a>
     
-    <!-- Laporan Heading -->
+    <!-- Users Heading -->
     <div class="sidebar-section-title" style="padding: 15px 15px 8px 15px; color: #a0d8d1; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
-      <i class="fas fa-chart-bar me-2"></i> Laporan & User
+      <i class="fas fa-chart-bar me-2"></i>User
     </div>
     
     <!-- User -->
-    <a href="<?= base_url('user') ?>" 
-       class="sidebar-item <?= ($title=='Laporan'?'active':'') ?>" 
+    <a href="<?= base_url('usermanagement') ?>" 
+       class="sidebar-item <?= ($title=='User'?'active':'') ?>" 
        style="display: flex; align-items: center; padding: 12px 15px; color: #e8fffb; text-decoration: none; border-radius: 8px; margin-bottom: 15px; transition: all 0.3s ease;">
       <i class="fas fa-users me-3" style="width: 20px; text-align: center;"></i> 
       <span>Manajemen User</span>
     </a>
   </div>
-  
+
   <!-- Logout -->
   <div class="sidebar-footer" style="position: absolute; bottom: 30px; left: 0; right: 0; padding: 0 20px;">
     <a href="<?= base_url('login/logout') ?>" 

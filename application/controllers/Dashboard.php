@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller {
         $data['total_wisata'] = $this->db->count_all('wisata');
         $data['total_fasilitas'] = $this->db->count_all('fasilitas');
         $data['total_kategori'] = $this->db->count_all('kategori_wisata');
-        $data['total_user'] = $this->User_model->count_all();
+        $data['total_user'] = $this->User_model->count_all('user');
         
         // Ambil wisata terbaru melalui model
         $data['wisata_terbaru'] = $this->User_model->get_recent_wisata(5);
