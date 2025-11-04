@@ -8,7 +8,7 @@ class Pemilik extends CI_Controller {
         $this->load->model('Pemilik_model');    
         $this->load->model('Wisata_model');
         $this->load->library('pagination');
-        $this->load->library('session'); // TAMBAHKAN INI
+        $this->load->library('session'); 
         $this->load->helper('url');
     }
 
