@@ -71,7 +71,7 @@
           </thead>
           <tbody>
             <?php if(isset($users) && is_array($users) && !empty($users)): ?>
-              <?php $no = 1; foreach($users as $user): ?>
+              <?php $no = $start + 1; foreach($users as $user): ?>
                 <tr style="transition:0.25s;" 
                     onmouseover="this.style.background='#f0f9f8'; this.style.transform='translateY(-1px)';" 
                     onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)';">
@@ -119,10 +119,9 @@
       </div>
     </div>
 
-    <!-- Pagination bisa ditambahkan nanti jika perlu -->
-    <!-- <div class="card-footer bg-white text-center py-3" style="border-top:1px solid #dee2e6;">
+    <div class="card-footer bg-white text-center py-3" style="border-top:1px solid #dee2e6;">
       <?= $pagination ?>
-    </div> -->
+    </div>
   </div>
 </div>
 

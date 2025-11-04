@@ -28,6 +28,16 @@ class User_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function get_paginated($limit, $offset)
+    {
+    $this->db->select('*');
+    $this->db->from('user');
+    $this->db->order_by('id_user', 'DESC');
+    $this->db->limit($limit, $offset);
+    return $this->db->get()->result();
+    }
+
+
     public function get_user_by_id($id)
     {
         $this->db->where('id_user', $id);
