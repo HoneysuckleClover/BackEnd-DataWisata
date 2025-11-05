@@ -5,11 +5,6 @@
     <h4 style="font-weight:600; color:#0e3c38; margin-bottom:10px;">
       <i class="fas fa-users me-2"></i>Manajemen User WisataMag
     </h4>
-    <a href="<?= site_url('usermanagement/add') ?>" 
-       class="btn shadow-sm" 
-       style="background:#20c997; color:#fff; border:none; border-radius:8px; padding:8px 16px; font-weight:500; transition:0.3s;">
-      <i class="fas fa-plus me-1"></i> Tambah User
-    </a>
   </div>
 
   <!-- Notifikasi -->
